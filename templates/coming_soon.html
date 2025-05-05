@@ -59,48 +59,63 @@
     }
   </style>
 </head>
-<body class="relative bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900 min-h-screen flex items-center justify-center text-white px-4">
+<body class="bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900 min-h-screen flex flex-col items-center justify-center text-white px-4 text-center relative">
 
-  <!-- Music Toggle Button -->
-  <button id="musicToggle">🔊 Mute</button>
+  <!-- Music Toggle -->
+  <button id="musicToggle" class="absolute top-4 right-4 bg-white text-pink-600 font-bold px-4 py-2 rounded-full hover:bg-pink-100 transition z-50">
+    🔊 Mute
+  </button>
 
-  <!-- Content -->
-  <div class="text-center space-y-6 fade-in max-w-md w-full">
-    <div class="text-5xl sm:text-6xl font-extrabold glow-text floating">🚧</div>
-    <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold glow-text leading-tight">Website Under Construction</h1>
-    <p class="text-base sm:text-lg text-gray-300 max-w-md mx-auto">I'm building something amazing. The full experience will be live soon!</p>
+  <!-- Animation -->
+  <div class="w-full max-w-md mx-auto">
+    <lottie-player
+     src="https://assets4.lottiefiles.com/packages/lf20_KEQ1OfFv6Q.json"
+     background="transparent"
+     speed="1"
+     loop
+     autoplay>
+     </lottie-player>
 
-    <div class="mt-6">
-      <span class="text-xs sm:text-sm text-pink-400 blink block">Meanwhile, follow me on LinkedIn for updates...</span>
-      <a href="https://www.linkedin.com/in/jaivenkataarunakula" target="_blank"
-         class="inline-block mt-3 bg-white text-pink-600 font-bold px-4 py-2 rounded-full hover:bg-pink-100 transition text-sm sm:text-base">
-        💼 Jai's LinkedIn
-      </a>
-    </div>
+  </div>
+
+  <!-- Text Content -->
+  <div class="mt-6 space-y-4">
+    <h1 class="text-4xl md:text-5xl font-bold glow-text">Website Under Construction 🚧</h1>
+    <p class="text-lg text-gray-300">We're busy building something awesome. Stay tuned!</p>
+    <a href="https://www.linkedin.com/in/jaivenkataarunakula" target="_blank"
+      class="inline-block bg-white text-pink-600 font-bold px-4 py-2 rounded-full hover:bg-pink-100 transition">
+      💼 Follow on LinkedIn
+    </a>
   </div>
 
   <!-- Music -->
   <audio id="bgMusic" autoplay loop muted>
-    <source src="{{ url_for('static', filename='background.mp3') }}" type="audio/mp3" />
-    Your browser does not support the audio element.
+    <source src="{{ url_for('static', filename='background.mp3') }}" type="audio/mp3">
   </audio>
 
-  <!-- Script -->
+  <!-- Scripts -->
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
   <script>
     const music = document.getElementById("bgMusic");
-    const toggle = document.getElementById("musicToggle");
+    const toggleBtn = document.getElementById("musicToggle");
 
-    toggle.addEventListener("click", () => {
-      if (music.muted || music.paused) {
+    if (localStorage.getItem("music") === "on") {
+      music.muted = false;
+      toggleBtn.innerText = "🔊 Mute";
+    }
+
+    toggleBtn.addEventListener("click", () => {
+      if (music.muted) {
         music.muted = false;
-        music.play();
-        toggle.innerText = "🔊 Mute";
+        toggleBtn.innerText = "🔊 Mute";
+        localStorage.setItem("music", "on");
       } else {
         music.muted = true;
-        music.pause();
-        toggle.innerText = "🔇 Play";
+        toggleBtn.innerText = "🔇 Play";
+        localStorage.setItem("music", "off");
       }
     });
   </script>
+
 </body>
 </html>
