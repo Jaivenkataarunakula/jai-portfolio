@@ -5,6 +5,16 @@ app = Flask(__name__)
 # Maintenance mode toggle
 under_construction = True  # Set to False when site is ready
 
+home_content = {
+    "name": "Jai Venkata Arun",
+    "title": "Hi, I'm Jai Venkata Arun 👋",
+    "tagline": "Crafting digital systems, solving real problems.",
+    "bio": "I'm a Computer Science grad student and Python backend developer passionate about automation, cloud, and innovation.",
+    "resume_link": "jai_resume.pdf",
+    "linkedin": "https://www.linkedin.com/in/jaivenkataarunakula",
+}
+
+
 @app.route("/")
 def home():
     if under_construction:

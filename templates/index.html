@@ -1,15 +1,36 @@
 {% extends "base.html" %}
 
-{% block title %}Home - Jai{% endblock %}
+{% block title %}Home - {{ content.name }}{% endblock %}
 
 {% block content %}
-    <h1 class="text-4xl font-bold mb-4 text-blue-600">Hi, I’m Jai Venkata Arun 👋</h1>
-    <p class="text-lg mb-6">Welcome to my personal portfolio site built with Python & Flask!</p>
+<div class="text-center space-y-6 fade-in">
 
-    <div class="flex gap-4">
-        <a href="/projects" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">View My Projects</a>
-        <a href="{{ url_for('static', filename='resume.pdf') }}" download class="bg-gray-700 text-white px-4 py-2 rounded hover:bg-gray-800">
-            📄 Download Resume
-        </a>
-    </div>
+  <!-- Greeting -->
+  <h1 class="text-3xl sm:text-5xl font-extrabold bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text text-transparent">
+    {{ content.title }}
+  </h1>
+
+  <!-- Tagline -->
+  <p class="text-lg sm:text-xl text-gray-600 font-medium max-w-2xl mx-auto">{{ content.tagline }}</p>
+
+  <!-- Bio -->
+  <p class="text-base sm:text-lg text-gray-700 max-w-2xl mx-auto">{{ content.bio }}</p>
+
+  <!-- Action Buttons -->
+  <div class="flex flex-col sm:flex-row justify-center gap-4 mt-6">
+    <a href="{{ url_for('static', filename=content.resume_link) }}" download
+       class="bg-purple-600 text-white px-6 py-2 rounded-full hover:bg-purple-700 transition">
+      📄 Download Resume
+    </a>
+    <a href="/projects"
+       class="bg-white border border-purple-600 text-purple-700 px-6 py-2 rounded-full hover:bg-purple-50 transition">
+      💼 View Projects
+    </a>
+    <a href="{{ content.linkedin }}" target="_blank"
+       class="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition">
+      🔗 LinkedIn
+    </a>
+  </div>
+
+</div>
 {% endblock %}
