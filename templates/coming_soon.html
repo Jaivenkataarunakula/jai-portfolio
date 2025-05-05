@@ -3,8 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <title>🚧 Coming Soon</title>
-  <script src="https://cdn.tailwindcss.com"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Tailwind CSS + Lottie -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
   <style>
     @keyframes fadeIn {
       0% { opacity: 0; transform: translateY(20px); }
@@ -67,19 +71,19 @@
   </button>
 
   <!-- Animation -->
-  <div class="w-full max-w-md mx-auto">
+  <div class="w-full max-w-md mx-auto fade-in">
     <lottie-player
-     src="https://assets4.lottiefiles.com/packages/lf20_KEQ1OfFv6Q.json"
-     background="transparent"
-     speed="1"
-     loop
-     autoplay>
-     </lottie-player>
-
+      src="https://assets4.lottiefiles.com/packages/lf20_KEQ1OfFv6Q.json"
+      background="transparent"
+      speed="1"
+      loop
+      autoplay
+      style="width: 300px; height: 300px;">
+    </lottie-player>
   </div>
 
   <!-- Text Content -->
-  <div class="mt-6 space-y-4">
+  <div class="mt-6 space-y-4 fade-in">
     <h1 class="text-4xl md:text-5xl font-bold glow-text">Website Under Construction 🚧</h1>
     <p class="text-lg text-gray-300">We're busy building something awesome. Stay tuned!</p>
     <a href="https://www.linkedin.com/in/jaivenkataarunakula" target="_blank"
@@ -93,8 +97,7 @@
     <source src="{{ url_for('static', filename='background.mp3') }}" type="audio/mp3">
   </audio>
 
-  <!-- Scripts -->
-  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  <!-- Music Toggle Script -->
   <script>
     const music = document.getElementById("bgMusic");
     const toggleBtn = document.getElementById("musicToggle");
