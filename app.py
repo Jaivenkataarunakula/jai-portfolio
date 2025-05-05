@@ -1,12 +1,13 @@
-under_construction = True  # Set this to False when ready to go live
-
 from flask import Flask, render_template
 
 app = Flask(__name__)
 
+# Maintenance mode toggle
+under_construction = True  # Set to False when site is ready
+
 @app.route("/")
 def home():
-     if under_construction:
+    if under_construction:
         return render_template("coming_soon.html")
     return render_template("index.html")
 
