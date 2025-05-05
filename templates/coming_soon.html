@@ -2,14 +2,99 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Site Under Construction</title>
+  <title>🚧 Coming Soon</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-in {
+      animation: fadeIn 1s ease-out forwards;
+    }
+
+    .glow-text {
+      background: linear-gradient(to right, #38bdf8, #a78bfa, #f472b6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: bold;
+    }
+
+    .floating {
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .blink {
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      50% { opacity: 0.4; }
+    }
+
+    #musicToggle {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background-color: rgba(255, 255, 255, 0.1);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 9999px;
+      font-weight: bold;
+      border: 1px solid white;
+      cursor: pointer;
+      z-index: 100;
+    }
+
+    #musicToggle:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+  </style>
 </head>
-<body class="bg-gray-100 flex items-center justify-center h-screen text-center">
-  <div>
-    <h1 class="text-5xl font-bold text-blue-600 mb-4">🚧 Coming Soon!</h1>
-    <p class="text-xl text-gray-700 mb-6">My portfolio site is under construction.<br>Stay tuned for something awesome.</p>
-    <p class="text-sm text-gray-500">— Jai Venkata Arun</p>
+<body class="relative bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900 min-h-screen flex items-center justify-center text-white">
+
+  <!-- Music Toggle Button -->
+  <button id="musicToggle">🔊 Mute</button>
+
+  <!-- Content -->
+  <div class="text-center space-y-6 fade-in">
+    <div class="text-6xl font-extrabold glow-text floating">🚧</div>
+    <h1 class="text-4xl md:text-5xl font-bold glow-text">Website Under Construction</h1>
+    <p class="text-lg text-gray-300 max-w-xl mx-auto">I'm building something amazing. The full experience will be live soon!</p>
+
+    <div class="mt-6">
+      <span class="text-sm text-pink-400 blink">Meanwhile, follow me on LinkedIn for updates...</span><br>
+      <a href="https://www.linkedin.com/in/jaivenkataarunakula" class="inline-block mt-2 bg-white text-pink-600 font-bold px-4 py-2 rounded-full hover:bg-pink-100 transition">💼 Jai's LinkedIn</a>
+    </div>
   </div>
+
+  <!-- Music -->
+  <audio id="bgMusic" autoplay loop>
+    <source src="{{ url_for('static', filename='background.mp3') }}" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
+
+  <!-- Script -->
+  <script>
+    const music = document.getElementById("bgMusic");
+    const toggle = document.getElementById("musicToggle");
+
+    toggle.addEventListener("click", () => {
+      if (music.paused) {
+        music.play();
+        toggle.innerText = "🔊 Mute";
+      } else {
+        music.pause();
+        toggle.innerText = "🔇 Play";
+      }
+    });
+  </script>
+
 </body>
 </html>
