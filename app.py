@@ -1,9 +1,13 @@
+under_construction = True  # Set this to False when ready to go live
+
 from flask import Flask, render_template
 
 app = Flask(__name__)
 
 @app.route("/")
 def home():
+     if under_construction:
+        return render_template("coming_soon.html")
     return render_template("index.html")
 
 @app.route("/about")
