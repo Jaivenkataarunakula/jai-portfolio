@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>🚧 Coming Soon</title>
+  <title>Coming Soon</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- Tailwind CSS + Lottie -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module" ></script>
 
   <style>
     @keyframes fadeIn {
@@ -72,19 +72,20 @@
 
   <!-- Animation -->
   <div class="w-full max-w-md mx-auto fade-in">
-    <lottie-player
-      src="https://assets4.lottiefiles.com/packages/lf20_KEQ1OfFv6Q.json"
-      background="transparent"
-      speed="1"
-      loop
-      autoplay
-      style="width: 300px; height: 300px;">
-    </lottie-player>
+    <dotlottie-player
+     src="https://lottie.host/1680f85f-041c-4dce-9006-df9caa366835/JojPEgEKot.lottie"
+     background="transparent"
+     speed="1"
+     style="width: 250px; height: 250px"
+     loop
+     autoplay
+  ></dotlottie-player>
+
   </div>
 
   <!-- Text Content -->
   <div class="mt-6 space-y-4 fade-in">
-    <h1 class="text-4xl md:text-5xl font-bold glow-text">Website Under Construction 🚧</h1>
+    <h1 class="text-4xl md:text-5xl font-bold glow-text">Website Under Construction</h1>
     <p class="text-lg text-gray-300">We're busy building something awesome. Stay tuned!</p>
     <a href="https://www.linkedin.com/in/jaivenkataarunakula" target="_blank"
       class="inline-block bg-white text-pink-600 font-bold px-4 py-2 rounded-full hover:bg-pink-100 transition">
