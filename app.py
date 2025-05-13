@@ -3,7 +3,7 @@ from flask import Flask, render_template
 app = Flask(__name__)
 
 # Maintenance mode toggle
-under_construction = False  # Set to False when site is ready
+under_construction = True  # Set to False when site is ready
 
 home_content = {
     "name": "Jai Venkata Arun",
