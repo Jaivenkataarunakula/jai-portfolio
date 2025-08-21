@@ -35,3 +35,5 @@ def contact():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+#these all are just changes to the files to practice git hub. 
